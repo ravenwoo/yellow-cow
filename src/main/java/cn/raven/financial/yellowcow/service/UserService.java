@@ -3,6 +3,8 @@ package cn.raven.financial.yellowcow.service;
 import cn.raven.financial.yellowcow.common.bean.request.UserBean;
 import cn.raven.financial.yellowcow.dao.entity.User;
 
+import java.util.List;
+
 /**
  * @Desription:
  * @Author: Raven wu
@@ -10,6 +12,10 @@ import cn.raven.financial.yellowcow.dao.entity.User;
  */
 public interface UserService {
 
-    User newUser(UserBean userBean);
+    User saveUser(UserBean userBean);
+
+    List<User> query();
+
+    void delete(Long id);
 
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 /**
  * @Desription:
@@ -22,12 +24,24 @@ public class UserController extends BaseController<UserBean> {
     @Autowired
     private UserService userService;
 
-    @PostMapping("new")
-    public User newUser(@RequestBody UserBean bean) {
+    @PostMapping("save")
+    public User saveUser(@RequestBody UserBean bean) {
         if (super.validate(bean)) {
             return null;
         }
-        return userService.newUser(bean);
+        return userService.saveUser(bean);
+    }
+
+    @PostMapping("delete")
+    public String delete(@RequestBody Long id) {
+        userService.delete(id);
+        return "999";
+    }
+
+    @PostMapping("query")
+    public List<User> query() {
+
+        return userService.query();
     }
 
 }
